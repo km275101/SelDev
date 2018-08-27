@@ -1,0 +1,6 @@
+dataprovider\SearchProductdataProvider.class
+pageFactoryCore\OpenAndCloseBrowser.class
+pageFactoryCore\ActionDriver.class
+dataprovider\LogindataProvider.class
+pageElementsPageFactory\PdpPE.class
+dataprovider\TestAny.class
