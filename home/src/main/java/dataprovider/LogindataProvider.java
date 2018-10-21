@@ -27,8 +27,32 @@ public class LogindataProvider {
 			int n = worksheet.getLastRowNum();
 			System.out.println("Total number of rows :"+n);
 			
-				userDetails.add(worksheet.getRow(1).getCell(0).getStringCellValue());
-				userDetails.add(worksheet.getRow(1).getCell(1).getStringCellValue());
+				userDetails.add(worksheet.getRow(1).getCell(0).getStringCellValue().toString());
+				userDetails.add(worksheet.getRow(1).getCell(1).getStringCellValue().toString());
+				
+			
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		http://pydev.org/updateshttp://pydev.org/updateshttp://pydev.org/updateshttp://pydev.org/updateshttp://pydev.org/updateshttp://pydev.org/updateshttp://pydev.org/updates
+		return userDetails;
+		
+	}
+	
+public List<String> getUrlDetails() throws InvalidFormatException{
+		
+		List<String> urlDetails = new ArrayList<String>();
+		
+		try{
+			fis = new FileInputStream(path);
+			workbook = new XSSFWorkbook(fis);
+			XSSFSheet worksheet = workbook.getSheet("Login");
+			int n = worksheet.getLastRowNum();
+			System.out.println("Total number of rows :"+n);
+			
+			urlDetails.add(worksheet.getRow(1).getCell(0).getStringCellValue());
+			urlDetails.add(worksheet.getRow(1).getCell(1).getStringCellValue());
 				
 			
 		}catch (IOException e) {
@@ -36,7 +60,7 @@ public class LogindataProvider {
 		}
 		
 		
-		return userDetails;
+		return urlDetails;
 		
 	}
 	

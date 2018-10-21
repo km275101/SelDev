@@ -1,9 +1,11 @@
 package pageFunctionsPageFactory;
 
+import static org.testng.Assert.fail;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
+ 
 import dataprovider.LogindataProvider;
 import pageElementsPageFactory.LoginPE;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -17,32 +19,44 @@ public class LoginPF extends LoginPE{
 	}
 
 	LogindataProvider dataProvider = new LogindataProvider();
-	final static Logger log = Logger.getLogger(homeTest.LoginPF.class);
-
+	private static Logger logger = Logger.getLogger(LoginPF.class);
+ 
 	@Step
 	public void setUsername(String strUser) {
-		log.info("Sending username");
-		userName.sendKeys(strUser);
+		try {
+			logger.info("Sending username");
+			userName.sendKeys(strUser);
+		} catch (Exception e) {
+			fail("Username", e);
+		}
 	}
  
 	@Step
 	public void setPass(String strPass) {
-		log.info("Sending password");
-		password.clear();
-		password.sendKeys(strPass);
-	}
+		try {
+			logger.info("Sending password");
+			password.clear();
+			password.sendKeys(strPass);
+		} catch (Exception e) {
+			fail("unable to enter pass", e);
+		}
+	} 
 	
 	@Step
     public void clickLogin() throws InterruptedException {
-		log.info("clicking submit button");
-		submit.click();
-		Thread.sleep(10000);
+		try {
+			logger.info("clicking submit button");
+			submit.click();
+			Thread.sleep(10000);
+		} catch (Exception e) {
+			fail("unable to click login", e);
+		}
 	}
 	
 	@Step
     public void clickYourOrders() {
 		try {
-			log.info("Click on your order button");
+			logger.info("Click on your order button");
 			Thread.sleep(5000);
 			yourOrders.click();
 		} catch (Exception e) {
@@ -51,7 +65,7 @@ public class LoginPF extends LoginPE{
 		}
 	 
 	}
-	 
+	  
 	@Step
 	public void LoginExcel() {
 		try {
